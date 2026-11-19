@@ -1,0 +1,13 @@
+{
+  "domain": "bizneo_signin",
+  "name": "Bizneo Signin",
+  "codeowners": ["@pgallent"],
+  "config_flow": true,
+  "dependencies": ["persistent_notification", "zone"],
+  "documentation": "https://github.com/pgallent/bizneo-signin-home-assistant",
+  "integration_type": "service",
+  "iot_class": "cloud_push",
+  "issue_tracker": "https://github.com/pgallent/bizneo-signin-home-assistant/issues",
+  "requirements": ["holidays==0.107"],
+  "version": "0.1.0"
+}

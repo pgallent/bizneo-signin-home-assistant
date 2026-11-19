@@ -1,0 +1,91 @@
+registrar_pausa:
+  name: Registrar pausa
+  description: Registra una pausa en la jornada activa usando la hora real de la llamada.
+  fields:
+    config_entry_id:
+      name: Configuración
+      description: Obligatoria si hay más de una cuenta configurada.
+      selector:
+        config_entry:
+          integration: bizneo_signin
+    tipo:
+      name: Tipo
+      required: true
+      selector:
+        select:
+          options:
+            - label: Corta
+              value: corta
+            - label: Larga
+              value: larga
+
+iniciar_jornada_manual:
+  name: Iniciar jornada manualmente
+  description: Recupera una entrada no detectada. Si se omite la hora, usa la actual.
+  fields:
+    config_entry_id:
+      name: Configuración
+      selector:
+        config_entry:
+          integration: bizneo_signin
+    hora:
+      name: Fecha y hora de entrada
+      example: "2026-03-02T07:58:00+01:00"
+      selector:
+        text:
+
+finalizar_jornada_manual:
+  name: Finalizar jornada manualmente
+  description: Cierra y envía una jornada activa. Si se omite la hora, usa la actual.
+  fields:
+    config_entry_id:
+      name: Configuración
+      selector:
+        config_entry:
+          integration: bizneo_signin
+    hora:
+      name: Fecha y hora de salida
+      example: "2026-03-02T16:32:00+01:00"
+      selector:
+        text:
+
+descartar_jornada:
+  name: Descartar jornada local
+  description: Elimina la sesión local actual sin borrar ni modificar nada en Bizneo.
+  fields:
+    config_entry_id:
+      name: Configuración
+      selector:
+        config_entry:
+          integration: bizneo_signin
+
+reintentar_envio:
+  name: Reintentar envío
+  description: Reintenta un envío fallido inequívocamente; nunca un envío dudoso.
+  fields:
+    config_entry_id:
+      name: Configuración
+      selector:
+        config_entry:
+          integration: bizneo_signin
+
+resolver_envio_dudoso:
+  name: Resolver envío dudoso
+  description: Indica el resultado comprobado manualmente en Bizneo.
+  fields:
+    config_entry_id:
+      name: Configuración
+      selector:
+        config_entry:
+          integration: bizneo_signin
+    resultado:
+      name: Resultado en Bizneo
+      required: true
+      selector:
+        select:
+          options:
+            - label: La jornada fue creada
+              value: creado
+            - label: La jornada no fue creada
+              value: no_creado
+

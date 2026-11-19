@@ -1,0 +1,120 @@
+{
+  "title": "Bizneo Signin",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Bizneo",
+        "description": "Enter the write-only Bizneo API credentials.",
+        "data": {
+          "bizneo_domain": "Bizneo domain",
+          "user_id": "Bizneo user ID",
+          "token": "API token"
+        }
+      },
+      "tracking": {
+        "title": "Work location",
+        "description": "Select the tracked entity and the work zone.",
+        "data": {
+          "tracked_entity": "Person or device tracker",
+          "work_zone": "Work zone"
+        }
+      },
+      "schedule": {
+        "title": "Schedule",
+        "description": "Configure crossing, dwell and pause windows.",
+        "data": {
+          "entry_window_start": "Entry window start",
+          "entry_window_end": "Entry window end",
+          "exit_window_start": "Regular exit window start",
+          "exit_window_end": "Regular exit window end",
+          "friday_exit_window_start": "Friday exit window start",
+          "friday_exit_window_end": "Friday exit window end",
+          "entry_dwell_minutes": "Minutes required inside",
+          "exit_dwell_minutes": "Minutes required outside",
+          "short_pause_window_start": "Short pause window start",
+          "short_pause_window_end": "Short pause window end",
+          "long_pause_window_start": "Long pause window start",
+          "long_pause_window_end": "Long pause window end",
+          "short_pause_min_minutes": "Short pause minimum minutes",
+          "short_pause_max_minutes": "Short pause maximum minutes",
+          "long_pause_min_minutes": "Long pause minimum minutes",
+          "long_pause_max_minutes": "Long pause maximum minutes",
+          "randomize_pause_durations": "Randomize pause durations",
+          "random_step_minutes": "Randomization step in minutes",
+          "community": "Spanish autonomous community",
+          "non_working_dates": "Extra non-working dates or ranges",
+          "pauses_as_rest": "Send pauses as Bizneo rests",
+          "short_rest_id": "Short pause rest ID",
+          "long_rest_id": "Long pause rest ID"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect to Bizneo",
+        "description": "Enter a new API token.",
+        "data": {"token": "API token"}
+      },
+      "reconfigure": {
+        "title": "Reconfigure account and tracking",
+        "data": {
+          "bizneo_domain": "Bizneo domain",
+          "user_id": "Bizneo user ID",
+          "token": "API token",
+          "tracked_entity": "Person or device tracker",
+          "work_zone": "Work zone"
+        }
+      }
+    },
+    "error": {
+      "invalid_domain": "Use the HTTPS base domain without a path.",
+      "invalid_auth": "The token cannot be empty.",
+      "invalid_schedule": "Check windows, durations, rest IDs and non-working dates."
+    },
+    "abort": {
+      "already_configured": "This Bizneo user is already configured.",
+      "reauth_successful": "Authentication was updated successfully.",
+      "reconfigure_successful": "Configuration was updated successfully.",
+      "wrong_account": "Reconfiguration cannot change to another account."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Schedule options",
+        "description": "Changes reload the integration and preserve the active session.",
+        "data": {
+          "entry_window_start": "Entry window start",
+          "entry_window_end": "Entry window end",
+          "exit_window_start": "Regular exit window start",
+          "exit_window_end": "Regular exit window end",
+          "friday_exit_window_start": "Friday exit window start",
+          "friday_exit_window_end": "Friday exit window end",
+          "entry_dwell_minutes": "Minutes required inside",
+          "exit_dwell_minutes": "Minutes required outside",
+          "short_pause_window_start": "Short pause window start",
+          "short_pause_window_end": "Short pause window end",
+          "long_pause_window_start": "Long pause window start",
+          "long_pause_window_end": "Long pause window end",
+          "short_pause_min_minutes": "Short pause minimum minutes",
+          "short_pause_max_minutes": "Short pause maximum minutes",
+          "long_pause_min_minutes": "Long pause minimum minutes",
+          "long_pause_max_minutes": "Long pause maximum minutes",
+          "randomize_pause_durations": "Randomize pause durations",
+          "random_step_minutes": "Randomization step in minutes",
+          "community": "Spanish autonomous community",
+          "non_working_dates": "Extra non-working dates or ranges",
+          "pauses_as_rest": "Send pauses as Bizneo rests",
+          "short_rest_id": "Short pause rest ID",
+          "long_rest_id": "Long pause rest ID"
+        }
+      }
+    },
+    "error": {"invalid_schedule": "Check windows, durations, rest IDs and non-working dates."}
+  },
+  "entity": {
+    "binary_sensor": {"jornada_activa": {"name": "Active workday"}},
+    "sensor": {
+      "jornada_estado": {"name": "Workday status"},
+      "ultima_jornada": {"name": "Last workday"}
+    }
+  }
+}

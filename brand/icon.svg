@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Bizneo Signin">
+  <rect width="512" height="512" rx="112" fill="#1677ff"/>
+  <circle cx="256" cy="256" r="146" fill="none" stroke="#ffffff" stroke-width="38"/>
+  <path d="M256 166v98l72 46" fill="none" stroke="#ffffff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M117 389l48-60 42 35 76-94" fill="none" stroke="#80ffc4" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
