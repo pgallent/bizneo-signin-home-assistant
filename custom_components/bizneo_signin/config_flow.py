@@ -13,6 +13,8 @@ from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import selector
 
 from .const import (
+    COMMUNITY_CODES,
+    COMMUNITY_NONE,
     CONF_BIZNEO_DOMAIN,
     CONF_COMMUNITY,
     CONF_ENTRY_DWELL_MINUTES,
@@ -44,29 +46,6 @@ from .const import (
     DOMAIN,
 )
 from .schedule import ScheduleError, parse_non_working_dates, parse_time
-
-COMMUNITIES = [
-    "",
-    "AN",
-    "AR",
-    "AS",
-    "IB",
-    "CN",
-    "CB",
-    "CM",
-    "CL",
-    "CT",
-    "CE",
-    "EX",
-    "GA",
-    "RI",
-    "MD",
-    "ML",
-    "MC",
-    "NC",
-    "PV",
-    "VC",
-]
 
 
 def _validate_domain(value: str) -> str:
@@ -163,7 +142,16 @@ def _options_schema(defaults: dict[str, Any]) -> vol.Schema:
             vol.Required(
                 CONF_RANDOM_STEP_MINUTES, default=values[CONF_RANDOM_STEP_MINUTES]
             ): vol.All(vol.Coerce(int), vol.Range(min=1, max=60)),
-            vol.Required(CONF_COMMUNITY, default=values[CONF_COMMUNITY]): vol.In(COMMUNITIES),
+            # Entries created before COMMUNITY_NONE existed store "" for "no community".
+            vol.Required(
+                CONF_COMMUNITY, default=values[CONF_COMMUNITY] or COMMUNITY_NONE
+            ): selector.SelectSelector(
+                selector.SelectSelectorConfig(
+                    options=[COMMUNITY_NONE, *COMMUNITY_CODES],
+                    mode=selector.SelectSelectorMode.DROPDOWN,
+                    translation_key=CONF_COMMUNITY,
+                )
+            ),
             vol.Optional(CONF_NON_WORKING_DATES, default=values[CONF_NON_WORKING_DATES]): cv.string,
             vol.Required(CONF_PAUSES_AS_REST, default=values[CONF_PAUSES_AS_REST]): cv.boolean,
             vol.Optional(CONF_SHORT_REST_ID, default=values[CONF_SHORT_REST_ID]): vol.All(

@@ -46,7 +46,8 @@
           "pauses_as_rest": "Send pauses as Bizneo rests",
           "short_rest_id": "Short pause rest ID",
           "long_rest_id": "Long pause rest ID"
-        }
+        },
+        "data_description": {"community": "Regional holidays are added to the national ones. Choose “None” to apply national holidays only."}
       },
       "reauth_confirm": {
         "title": "Reconnect to Bizneo",
@@ -105,10 +106,37 @@
           "pauses_as_rest": "Send pauses as Bizneo rests",
           "short_rest_id": "Short pause rest ID",
           "long_rest_id": "Long pause rest ID"
-        }
+        },
+        "data_description": {"community": "Regional holidays are added to the national ones. Choose “None” to apply national holidays only."}
       }
     },
     "error": {"invalid_schedule": "Check windows, durations, rest IDs and non-working dates."}
+  },
+  "selector": {
+    "community": {
+      "options": {
+        "none": "None (national holidays only)",
+        "AN": "Andalusia",
+        "AR": "Aragon",
+        "AS": "Asturias",
+        "CN": "Canary Islands",
+        "CB": "Cantabria",
+        "CM": "Castilla-La Mancha",
+        "CL": "Castile and León",
+        "CT": "Catalonia",
+        "CE": "Ceuta",
+        "VC": "Valencian Community",
+        "EX": "Extremadura",
+        "GA": "Galicia",
+        "IB": "Balearic Islands",
+        "RI": "La Rioja",
+        "MD": "Madrid",
+        "ML": "Melilla",
+        "MC": "Murcia",
+        "NC": "Navarre",
+        "PV": "Basque Country"
+      }
+    }
   },
   "entity": {
     "binary_sensor": {"jornada_activa": {"name": "Active workday"}},

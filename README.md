@@ -42,7 +42,8 @@ jornada: deja la sesión activa, crea una notificación y requiere
 `bizneo_signin.finalizar_jornada_manual`.
 
 Los sábados, domingos, festivos nacionales/autonómicos y fechas de `no_laborables` se
-omiten. La comunidad usa códigos de `holidays`, por ejemplo `VC`, `MD`, `CT` o `AN`.
+omiten. La comunidad autónoma se elige en un desplegable y sus festivos se suman a los
+nacionales; con «Ninguna» solo se aplican los festivos nacionales.
 Las fechas adicionales aceptan valores y rangos separados por comas o líneas:
 
 ```text

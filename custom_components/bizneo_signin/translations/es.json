@@ -27,7 +27,8 @@
           "randomize_pause_durations": "Aleatorizar duración de pausas", "random_step_minutes": "Paso aleatorio en minutos",
           "community": "Comunidad autónoma", "non_working_dates": "Fechas o rangos no laborables adicionales",
           "pauses_as_rest": "Enviar pausas como descansos Bizneo", "short_rest_id": "ID del descanso corto", "long_rest_id": "ID del descanso largo"
-        }
+        },
+        "data_description": {"community": "Los festivos de la comunidad se suman a los nacionales. Elige «Ninguna» para aplicar solo los festivos nacionales."}
       },
       "reauth_confirm": {"title": "Volver a conectar con Bizneo", "description": "Introduce un token de API nuevo.", "data": {"token": "Token de API"}},
       "reconfigure": {"title": "Reconfigurar cuenta y seguimiento", "data": {"bizneo_domain": "Dominio de Bizneo", "user_id": "ID de usuario de Bizneo", "token": "Token de API", "tracked_entity": "Persona o rastreador", "work_zone": "Zona de trabajo"}}
@@ -38,8 +39,30 @@
   "options": {
     "step": {"init": {"title": "Opciones de horario", "description": "Los cambios recargan la integración y conservan la sesión activa.", "data": {
       "entry_window_start": "Inicio de ventana de entrada", "entry_window_end": "Fin de ventana de entrada", "exit_window_start": "Inicio de salida normal", "exit_window_end": "Fin de salida normal", "friday_exit_window_start": "Inicio de salida del viernes", "friday_exit_window_end": "Fin de salida del viernes", "entry_dwell_minutes": "Minutos requeridos dentro", "exit_dwell_minutes": "Minutos requeridos fuera", "short_pause_window_start": "Inicio de pausa corta", "short_pause_window_end": "Fin de pausa corta", "long_pause_window_start": "Inicio de pausa larga", "long_pause_window_end": "Fin de pausa larga", "short_pause_min_minutes": "Duración mínima de pausa corta", "short_pause_max_minutes": "Duración máxima de pausa corta", "long_pause_min_minutes": "Duración mínima de pausa larga", "long_pause_max_minutes": "Duración máxima de pausa larga", "randomize_pause_durations": "Aleatorizar duración de pausas", "random_step_minutes": "Paso aleatorio en minutos", "community": "Comunidad autónoma", "non_working_dates": "Fechas o rangos no laborables adicionales", "pauses_as_rest": "Enviar pausas como descansos Bizneo", "short_rest_id": "ID del descanso corto", "long_rest_id": "ID del descanso largo"
-    }}},
+    }, "data_description": {"community": "Los festivos de la comunidad se suman a los nacionales. Elige «Ninguna» para aplicar solo los festivos nacionales."}}},
     "error": {"invalid_schedule": "Revisa ventanas, duraciones, IDs de descanso y fechas no laborables."}
   },
+  "selector": {"community": {"options": {
+    "none": "Ninguna (solo festivos nacionales)",
+    "AN": "Andalucía",
+    "AR": "Aragón",
+    "AS": "Asturias",
+    "CN": "Canarias",
+    "CB": "Cantabria",
+    "CM": "Castilla-La Mancha",
+    "CL": "Castilla y León",
+    "CT": "Cataluña",
+    "CE": "Ceuta",
+    "VC": "Comunidad Valenciana",
+    "EX": "Extremadura",
+    "GA": "Galicia",
+    "IB": "Islas Baleares",
+    "RI": "La Rioja",
+    "MD": "Madrid",
+    "ML": "Melilla",
+    "MC": "Murcia",
+    "NC": "Navarra",
+    "PV": "País Vasco"
+  }}},
   "entity": {"binary_sensor": {"jornada_activa": {"name": "Jornada activa"}}, "sensor": {"jornada_estado": {"name": "Estado de jornada"}, "ultima_jornada": {"name": "Última jornada"}}}
 }

@@ -10,6 +10,8 @@ from typing import Any
 import holidays
 
 from .const import (
+    COMMUNITY_CODES,
+    COMMUNITY_NONE,
     CONF_COMMUNITY,
     CONF_FRIDAY_EXIT_WINDOW_END,
     CONF_FRIDAY_EXIT_WINDOW_START,
@@ -26,28 +28,6 @@ from .const import (
     PauseType,
 )
 from .models import Pause, WorkSession
-
-COMMUNITY_CODES = {
-    "AN",
-    "AR",
-    "AS",
-    "IB",
-    "CN",
-    "CB",
-    "CM",
-    "CL",
-    "CT",
-    "CE",
-    "EX",
-    "GA",
-    "RI",
-    "MD",
-    "ML",
-    "MC",
-    "NC",
-    "PV",
-    "VC",
-}
 
 
 class ScheduleError(ValueError):
@@ -112,14 +92,17 @@ def is_working_day(day: date, options: Mapping[str, Any], holidays_module=None) 
         return False
     if day in parse_non_working_dates(options.get(CONF_NON_WORKING_DATES, "")):
         return False
-    community = str(options.get(CONF_COMMUNITY, "")).strip().upper()
-    if not community:
-        return True
-    if community not in COMMUNITY_CODES:
-        raise ScheduleError(f"Código de comunidad autónoma no válido: {community}")
+    # National holidays always apply; the community only adds its regional ones.
+    # An empty value is accepted for entries created before COMMUNITY_NONE existed.
+    community = str(options.get(CONF_COMMUNITY) or "").strip().upper()
+    kwargs: dict[str, Any] = {"years": [day.year]}
+    if community and community != COMMUNITY_NONE.upper():
+        if community not in COMMUNITY_CODES:
+            raise ScheduleError(f"Código de comunidad autónoma no válido: {community}")
+        kwargs["subdiv"] = community
     if holidays_module is None:
         holidays_module = holidays
-    return day not in holidays_module.Spain(subdiv=community, years=[day.year])
+    return day not in holidays_module.Spain(**kwargs)
 
 
 def choose_duration(

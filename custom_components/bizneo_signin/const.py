@@ -37,6 +37,31 @@ CONF_PAUSES_AS_REST = "pauses_as_rest"
 CONF_SHORT_REST_ID = "short_rest_id"
 CONF_LONG_REST_ID = "long_rest_id"
 
+# National holidays only, no autonomous community.
+COMMUNITY_NONE = "none"
+# holidays.Spain subdivision codes, ordered by their Spanish name for the UI dropdown.
+COMMUNITY_CODES = (
+    "AN",  # Andalucía
+    "AR",  # Aragón
+    "AS",  # Asturias
+    "CN",  # Canarias
+    "CB",  # Cantabria
+    "CM",  # Castilla-La Mancha
+    "CL",  # Castilla y León
+    "CT",  # Cataluña
+    "CE",  # Ceuta
+    "VC",  # Comunidad Valenciana
+    "EX",  # Extremadura
+    "GA",  # Galicia
+    "IB",  # Islas Baleares
+    "RI",  # La Rioja
+    "MD",  # Madrid
+    "ML",  # Melilla
+    "MC",  # Murcia
+    "NC",  # Navarra
+    "PV",  # País Vasco
+)
+
 DEFAULT_OPTIONS = {
     CONF_ENTRY_WINDOW_START: "07:00",
     CONF_ENTRY_WINDOW_END: "10:00",
@@ -56,7 +81,7 @@ DEFAULT_OPTIONS = {
     CONF_LONG_PAUSE_MAX_MINUTES: 30,
     CONF_RANDOMIZE_PAUSE_DURATIONS: False,
     CONF_RANDOM_STEP_MINUTES: 1,
-    CONF_COMMUNITY: "",
+    CONF_COMMUNITY: COMMUNITY_NONE,
     CONF_NON_WORKING_DATES: "",
     CONF_PAUSES_AS_REST: False,
     CONF_SHORT_REST_ID: 0,

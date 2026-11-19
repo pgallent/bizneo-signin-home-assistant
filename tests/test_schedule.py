@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import random
 import unittest
-from datetime import datetime
+from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 from custom_components.bizneo_signin.const import DEFAULT_OPTIONS, PauseType
@@ -157,6 +157,22 @@ class ScheduleTests(unittest.TestCase):
         self.assertFalse(
             is_working_day(at("2026-03-04T08:00:00").date(), self.options, FakeHolidays)
         )
+
+    def test_national_holidays_apply_without_community(self):
+        new_year = date(2026, 1, 1)  # Thursday, national holiday
+        diada = date(2026, 9, 11)  # Friday, holiday only in Catalonia
+        for community in ("none", "", None):
+            self.options["community"] = community
+            self.assertFalse(is_working_day(new_year, self.options))
+            self.assertTrue(is_working_day(diada, self.options))
+        self.options["community"] = "CT"
+        self.assertFalse(is_working_day(new_year, self.options))
+        self.assertFalse(is_working_day(diada, self.options))
+
+    def test_unknown_community_is_rejected(self):
+        self.options["community"] = "XX"
+        with self.assertRaisesRegex(ScheduleError, "comunidad"):
+            is_working_day(date(2026, 3, 2), self.options)
 
     def test_reversed_non_working_range_is_rejected(self):
         with self.assertRaisesRegex(ScheduleError, "al revés"):
