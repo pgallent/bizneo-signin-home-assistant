@@ -77,18 +77,15 @@ def _validate_domain(value: str) -> str:
     return value
 
 
-def _time(value: str) -> str:
-    parse_time(value)
-    return value
-
-
+# Form schemas are serialized for the frontend, so field validators must be types,
+# selectors or voluptuous built-ins. Custom checks (domain, times) run inside the steps.
 def _account_schema(defaults: dict[str, Any]) -> vol.Schema:
     return vol.Schema(
         {
             vol.Required(
                 CONF_BIZNEO_DOMAIN,
                 default=defaults.get(CONF_BIZNEO_DOMAIN, "https://empresa.bizneohr.com"),
-            ): _validate_domain,
+            ): cv.string,
             vol.Required(CONF_USER_ID, default=defaults.get(CONF_USER_ID, "")): vol.All(
                 cv.string, vol.Length(min=1)
             ),
@@ -137,7 +134,9 @@ def _options_schema(defaults: dict[str, Any]) -> vol.Schema:
         CONF_LONG_PAUSE_WINDOW_START,
         CONF_LONG_PAUSE_WINDOW_END,
     )
-    schema: dict[Any, Any] = {vol.Required(key, default=values[key]): _time for key in time_fields}
+    schema: dict[Any, Any] = {
+        vol.Required(key, default=values[key]): cv.string for key in time_fields
+    }
     schema.update(
         {
             vol.Required(
